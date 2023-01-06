@@ -45,8 +45,8 @@ async function getMetadata(product: string): Promise<MetadataIndex | undefined> 
 
   try {
     const resp = await http.getJson<MetadataIndex>(`${releasesUrl()}/${product}/index.json`, {
-      Accept: `application/vnd+hashicorp.releases-api.v1+json`,
-      'Content-Type': `application/vnd+hashicorp.releases-api.v1+json`,
+      [httpm.Headers.Accept]: `application/vnd+hashicorp.releases-api.v1+json`,
+      [httpm.Headers.ContentType]: `application/vnd+hashicorp.releases-api.v1+json`,
     });
 
     return resp.result || undefined;
