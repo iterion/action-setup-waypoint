@@ -148,7 +148,10 @@ function getMetadata(product) {
             maxRetries: 5,
         });
         try {
-            const resp = yield http.getJson(`${releasesUrl()}/${product}/index.json`);
+            const resp = yield http.getJson(`${releasesUrl()}/${product}/index.json`, {
+                Accept: `application/vnd+hashicorp.releases-api.v1+json`,
+                'Content-Type': `application/vnd+hashicorp.releases-api.v1+json`,
+            });
             return resp.result || undefined;
         }
         catch (err) {
